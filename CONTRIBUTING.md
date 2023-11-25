@@ -1,10 +1,10 @@
-﻿# Contributing to Raiqub Expressions
+﻿# Contributing to Raiqub JabModules
 
 We take Pull Requests!
 
 ## Before you send Pull Request
 
-1. Contact the contributors via the [Github Issue](https://github.com/skarllot/Expressions/issues/new/choose) to make sure that this is issue or bug should be handled with proposed way. Send details of your case and explain the details of the proposed solution.
+1. Contact the contributors via the [Github Issue](https://github.com/skarllot/jab-modules/issues/new/choose) to make sure that this is issue or bug should be handled with proposed way. Send details of your case and explain the details of the proposed solution.
 2. Once you get approval from one of the maintainers, you can start to work on your code change.
 3. After your changes are ready, make sure that you covered your case with automated tests and verify that you have limited the number of breaking changes to a bare minimum.
 4. We also highly appreciate any relevant updates to the documentation.

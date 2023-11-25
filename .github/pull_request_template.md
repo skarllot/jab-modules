@@ -1,4 +1,4 @@
-<!-- Thank you for contributing to Raiqub Expressions!  Open source is only as strong as its contributors. -->
+<!-- Thank you for contributing to Raiqub JabModules!  Open source is only as strong as its contributors. -->
 
 # Pull Request
 
