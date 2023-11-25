@@ -1,8 +1,6 @@
-﻿using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Raiqub.JabModules.MicrosoftExtensionsOptions.Tests.Examples;
-using Xunit;
 
 namespace Raiqub.JabModules.MicrosoftExtensionsOptions.Tests;
 
@@ -16,7 +14,7 @@ public class OptionsModuleTest
 
         string result = fooService.Call();
 
-        result.Should().Be("Hello Jane");
+        result.Should().Be("Hello Jane Doe");
     }
 
     [Fact]
@@ -39,5 +37,40 @@ public class OptionsModuleTest
         Action call = () => fooService.Call();
 
         call.Should().ThrowExactly<OptionsValidationException>();
+    }
+
+    [Fact]
+    public void ShouldThrowInvalidOptionsWithMessageFoo()
+    {
+        using var container = new FooInvalidOptionsWithMessageContainer();
+        var fooService = container.GetRequiredService<FooService>();
+
+        Action call = () => fooService.Call();
+
+        call.Should().ThrowExactly<OptionsValidationException>().Where(e => e.Message == "Name is not Jane");
+    }
+
+    [Fact]
+    public void ShouldThrowInvalidNamedOptionsWithMessageFoo()
+    {
+        using var container = new FooInvalidNamedOptionsWithMessageContainer();
+        using var scope = container.CreateScope();
+        var fooService = scope.GetRequiredService<FooServiceNamed>();
+
+        Action call = () => fooService.Call();
+
+        call.Should().ThrowExactly<OptionsValidationException>().Where(e => e.Message == "Name is not Jane");
+    }
+
+    [Fact]
+    public void ShouldConfigureFooWithName()
+    {
+        using var container = new FooNamedContainer();
+        using var scope = container.CreateScope();
+        var fooService = scope.GetRequiredService<FooServiceNamed>();
+
+        string result = fooService.Call();
+
+        result.Should().Be("Hello Jane Doe");
     }
 }
