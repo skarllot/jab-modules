@@ -8,11 +8,11 @@ namespace Raiqub.JabModules.MicrosoftExtensionsOptions.Tests.Examples;
 [Singleton<FooService>]
 [Transient<IConfigureOptions<FooOptions>>(Factory = nameof(ConfigureFoo))]
 [Transient<IValidateOptions<FooOptions>>(Factory = nameof(ValidateFoo))]
-public sealed partial class FooContainer
+public sealed partial class FooInvalidOptionsContainer
 {
     private static IConfigureOptions<FooOptions> ConfigureFoo() =>
         IOptionsModule.Configure<FooOptions>(options => options.Name = "Jane");
 
     private static IValidateOptions<FooOptions> ValidateFoo() =>
-        IOptionsModule.Validate<FooOptions>(options => options.Name == "Jane");
+        IOptionsModule.Validate<FooOptions>(options => options.Name != "Jane");
 }
