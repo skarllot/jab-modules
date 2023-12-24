@@ -24,8 +24,7 @@
                 "*.md",
                 ".config/**/*.*",
                 ".idea/**/*.*",
-                ".github/**/*.*",
-                "samples/**/*.*"
+                ".github/**/*.*"
             ]
         },
         "ignore-mutations": []
